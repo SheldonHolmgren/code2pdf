@@ -1,0 +1,107 @@
+title: MakerDAO
+targets:
+  - /home/holmgren/targets/makerdao/dss
+  - /home/holmgren/targets/makerdao/clipper-mom
+  - /home/holmgren/targets/makerdao/arbitrum-dai-bridge/
+  - /home/holmgren/targets/makerdao/dss-auto-line/
+  - /home/holmgren/targets/makerdao/dss-cdp-manager/
+  - /home/holmgren/targets/makerdao/dss-chain-log/
+  - /home/holmgren/targets/makerdao/dss-direct-deposit/
+  - /home/holmgren/targets/makerdao/dss-exec-lib/
+  - /home/holmgren/targets/makerdao/dss-gem-joins/
+  - /home/holmgren/targets/makerdao/dss-proxy-actions/
+  - /home/holmgren/targets/makerdao/dss-psm/
+  - /home/holmgren/targets/makerdao/dss-teleport/
+  - /home/holmgren/targets/makerdao/dss-vest/
+  - /home/holmgren/targets/makerdao/ds-weth/
+  - /home/holmgren/targets/makerdao/esm/
+  - /home/holmgren/targets/makerdao/exchange-callees/
+  - /home/holmgren/targets/makerdao/ilk-registry/
+  - /home/holmgren/targets/makerdao/median/
+  - /home/holmgren/targets/makerdao/optimism-dai-bridge/
+  - /home/holmgren/targets/makerdao/osm/
+  - /home/holmgren/targets/makerdao/starknet-dai-bridge/
+modules:
+  Core:
+    include_dirs:
+     - /home/holmgren/targets/makerdao/dss/src/dai.sol
+     - /home/holmgren/targets/makerdao/dss/src/vat.sol
+     - /home/holmgren/targets/makerdao/dss/src/spot.sol
+  Liquidations:
+    include_dirs:
+     - /home/holmgren/targets/makerdao/dss/src/clip.sol
+     - /home/holmgren/targets/makerdao/dss/src/abaci.sol
+     - /home/holmgren/targets/makerdao/dss/src/dog.sol
+     - /home/holmgren/targets/makerdao/clipper-mom/src/ClipperMom.sol
+  System Stabilizer:
+    include_dirs:
+     - /home/holmgren/targets/makerdao/dss/src/vow.sol
+     - /home/holmgren/targets/makerdao/dss/src/flop.sol
+     - /home/holmgren/targets/makerdao/dss/src/flap.sol
+  Rates:
+    include_dirs:
+     - /home/holmgren/targets/makerdao/dss/src/jug.sol
+     - /home/holmgren/targets/makerdao/dss/src/pot.sol
+  OSM:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/median/
+      - /home/holmgren/targets/makerdao/osm/
+  Emergency Shutdown:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss/src/end.sol
+      - /home/holmgren/targets/makerdao/esm/src/ESM.sol
+      - /home/holmgren/targets/makerdao/dss/src/cure.sol
+  Exec Lib:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss-exec-lib/
+  Direct deposit:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss-direct-deposit/
+  Gem joins:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss/src/join.sol
+      - /home/holmgren/targets/makerdao/dss-gem-joins/
+  Peg Stability:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss-psm/
+  WETH:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/ds-weth/
+  Proxy:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss-proxy-actions/
+      - /home/holmgren/targets/makerdao/dss-cdp-manager/
+  Exchange callees:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/exchange-callees/
+  Arbitrum bridge:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/arbitrum-dai-bridge/
+  Optimism bridge:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/optimism-dai-bridge/
+  StarkNet bridge:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/starknet-dai-bridge/
+  Teleport:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss-teleport/
+  Ilk registry:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/ilk-registry/
+  DSS Vest:
+    include_dirs:
+      - /home/holmgren/targets/makerdao/dss-vest/
+modifier_markers:
+  - name: auth
+    marker: ' {\color{JungleGreen}a}'
+
+exclude_files_regex: '.*/test/.*|.*test\.sol|.*\.t\.sol|.*/forge-std/.*'
+skip_files_regex: '.*/lib/.*'
+exclude_contracts_regex: 'Mock.*|.*Test|Cat|Flipper'
+
+slither_args:
+  dapp_ignore_compile: true
+  #compile_custom_build: make
+  /home/holmgren/targets/makerdao/exchange-callees/:
+    compile_force_framework: 'foundry'
